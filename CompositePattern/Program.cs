@@ -1,15 +1,36 @@
-﻿using Players;
-using Players.Additions;
+﻿using System.Globalization;
+using Players;
+using Players.Shields;
 
-Player player1 = new PlayerLvl1();
-Player player2 = new PlayerLvl1();
+Console.Clear();
+
+Player player1 = new PlayerLvl1() { Name = "player 1" };
+Player player2 = new PlayerLvl1() { Name = "player 2" };
+
+Console.WriteLine($"Player 2 is walking on the street with {player2.life} of life\n");
 
 
-player1.Attack(player2);
-PlayerWithAdditions player1Mesh = new MeshTshirt(player2);
+player1.Attack(player2);  // life 90
 
-player1.Attack(player1Mesh);
-player1.Attack(player1Mesh);
+ShieldProtection meshTshirt = new MeshTshirt(player2.Shield);
+player2.Shield = meshTshirt;
+
+Console.WriteLine($"Player 2 wears a MeshTshirt with {player2.life} of life\n");
+
+player1.Attack(player2); // life 81
+
+
+ShieldProtection MeshUnderVelt = new Vest(player2.Shield);
+player2.Shield = MeshUnderVelt;
+Console.WriteLine($"Player 2 wears a MeshUnderVelt with {player2.life} of life\n");
+
+
+player1.Attack(player2); // life 79
+
+
+// ShieldProtection player1ArmoredVelt = new ArmoredVest(player1Mesh);
+// player1.Attack(player1ArmoredVelt);
+
 
 Console.WriteLine("Statistics==========");
 Console.WriteLine("====================");
@@ -18,8 +39,8 @@ Console.WriteLine($"Player1: {player1.life}");
 Console.WriteLine($"      Weapon    : {player1.Weapon}");
 // Console.WriteLine($"      Additaments: {player1.life}");
 
-Console.WriteLine($"Player2: {player1Mesh.life}");
-Console.WriteLine($"      Weapon    : {player1Mesh.Weapon}");
+Console.WriteLine($"Player2: {player2.life}");
+Console.WriteLine($"      Weapon    : {player2.Weapon}");
 // Console.WriteLine($"      Additaments: {player1.life}");
 Console.WriteLine("====================\n\n");
 

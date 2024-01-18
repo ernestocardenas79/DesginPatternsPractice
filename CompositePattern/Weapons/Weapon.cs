@@ -1,10 +1,11 @@
 namespace Weapons;
 public abstract class Weapon
 {
-    public int damage { get; init; }
+    public string Name { get; init; }
+    public int Damage { get; init; }
     public Weapon(int damage)
     {
-        this.damage = damage;
+        this.Damage = damage;
     }
 
 }

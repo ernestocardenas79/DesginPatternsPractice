@@ -1,45 +1,68 @@
+using System.Globalization;
 using Weapons;
 
-namespace Players.Additions;
+namespace Players.Shields;
 
-public abstract class PlayerWithAdditions : Player
+public abstract class ShieldProtection
 {
-    protected Player Player { get; init; }
-    public PlayerWithAdditions(Player player)
+    protected ShieldProtection Shield { get; init; }
+    public ShieldProtection()
+    { }
+    public ShieldProtection(ShieldProtection shield)
     {
-        Player = player;
+        Shield = shield;
+    }
+    public abstract double CalculateProtection(double damage);
+}
+
+public class NoShield : ShieldProtection
+{
+    public NoShield()
+    {
+    }
+
+    public override double CalculateProtection(double damage)
+    {
+        return 0;
     }
 }
 
-public class MeshTshirt : PlayerWithAdditions
+public class MeshTshirt : ShieldProtection
 {
-    public MeshTshirt(Player player) : base(player)
-    {
-        life = player.life;
-    }
+    public MeshTshirt(ShieldProtection shield) : base(shield)
+    { }
 
-    protected override void HandleAttack(Weapon weapon)
+    public override double CalculateProtection(double damage)
     {
-        life -= int.Parse((weapon.damage * .3).ToString());
-    }
-}
+        Console.WriteLine($"Damage after Protection Mesh: {1}, Input Damage: {damage} Total Damage: {damage - 1}\n");
 
-public class Vest : PlayerWithAdditions
-{
-    public Vest(Player player) : base(player) { }
-
-    protected override void HandleAttack(Weapon weapon)
-    {
-        throw new NotImplementedException();
+        return 1;
     }
 }
 
-public class ArmoredVest : PlayerWithAdditions
+public class Vest : ShieldProtection
 {
-    public ArmoredVest(Player player) : base(player) { }
-
-    protected override void HandleAttack(Weapon weapon)
+    public Vest(ShieldProtection shield) : base(shield)
     {
-        throw new NotImplementedException();
+    }
+
+    public override double CalculateProtection(double damage)
+    {
+        Console.WriteLine($"Damage after Protection Mesh: {7}, Input Damage: {damage} Total Damage: {damage - 7}\n");
+
+        return Shield.CalculateProtection(damage - 7);
+    }
+}
+
+public class ArmoredVest : ShieldProtection
+{
+    public ArmoredVest(ShieldProtection shield) : base(shield)
+    {
+    }
+    public override double CalculateProtection(double damage)
+    {
+        Console.WriteLine($"Damage after Protection Mesh: {8}, Input Damage: {damage} Total Damage: {damage - 8}\n");
+
+        return Shield.CalculateProtection(damage - 8);
     }
 }
