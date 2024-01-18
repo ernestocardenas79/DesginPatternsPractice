@@ -23,7 +23,7 @@ public class NoShield : ShieldProtection
 
     public override double CalculateProtection(double damage)
     {
-        return 0;
+        return damage;
     }
 }
 
@@ -34,9 +34,9 @@ public class MeshTshirt : ShieldProtection
 
     public override double CalculateProtection(double damage)
     {
-        Console.WriteLine($"Damage after Protection Mesh: {1}, Input Damage: {damage} Total Damage: {damage - 1}\n");
+        Console.WriteLine($"Mesh Protection: {1}, Input Damage: {damage} Total Damage: {damage - 1}\n");
 
-        return 1;
+        return damage - 1;
     }
 }
 
@@ -48,7 +48,7 @@ public class Vest : ShieldProtection
 
     public override double CalculateProtection(double damage)
     {
-        Console.WriteLine($"Damage after Protection Mesh: {7}, Input Damage: {damage} Total Damage: {damage - 7}\n");
+        Console.WriteLine($"Vest Protection: {7}, Input Damage: {damage} Total Damage: {damage - 7}\n");
 
         return Shield.CalculateProtection(damage - 7);
     }
@@ -61,7 +61,7 @@ public class ArmoredVest : ShieldProtection
     }
     public override double CalculateProtection(double damage)
     {
-        Console.WriteLine($"Damage after Protection Mesh: {8}, Input Damage: {damage} Total Damage: {damage - 8}\n");
+        Console.WriteLine($"ArmoredVest Protection: {8}, Input Damage: {damage} Total Damage: {damage - 8}\n");
 
         return Shield.CalculateProtection(damage - 8);
     }

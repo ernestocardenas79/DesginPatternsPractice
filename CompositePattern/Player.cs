@@ -14,7 +14,7 @@ public abstract class Player
     public void Attack(Player player)
     {
         Console.WriteLine("********************************\n\n\n");
-        Console.WriteLine($"I've attacked with a {Weapon.Name} to {player.Name}, Damage of {Weapon.Damage}: Life= {player.life}\n");
+        Console.WriteLine($"{Name} attacked {player.Name} with a {Weapon.Name} , Damage of {Weapon.Damage}: Life= {player.life}\n");
 
         player.HandleAttack(this.Weapon);
     }
@@ -22,9 +22,9 @@ public abstract class Player
     public virtual void HandleAttack(Weapon weapon)
     {
         var shieldProtection = (int)Math.Round(Shield.CalculateProtection(weapon.Damage));
-        Console.WriteLine($"{Name}: Total Shield Protection: {shieldProtection}, life={life}, TotalLife= {life - shieldProtection}\n");
+        Console.WriteLine($"{Name}: life={life}, Total Damage: {shieldProtection},  Life after attack= {life - shieldProtection}\n");
 
-        life = life - shieldProtection;
+        life -= shieldProtection;
     }
 }
 
