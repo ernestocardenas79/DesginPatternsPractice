@@ -10,14 +10,14 @@ Player player2 = new PlayerLvl1() { Name = "player 2" };
 Console.WriteLine($"Player 2 is walking on the street with {player2.life} of life\n");
 
 
-player1.Attack(player2);  // life 90
+player1.Attack(player2);
 
 ShieldProtection meshTshirt = new MeshTshirt(player2.Shield);
 player2.Shield = meshTshirt;
 
 Console.WriteLine($"Player 2 wears a MeshTshirt with {player2.life} of life\n");
 
-player1.Attack(player2); // life 81
+player1.Attack(player2);
 
 
 ShieldProtection MeshUnderVelt = new Vest(player2.Shield);
@@ -25,7 +25,7 @@ player2.Shield = MeshUnderVelt;
 Console.WriteLine($"Player 2 wears a MeshUnderVelt with {player2.life} of life\n");
 
 
-player1.Attack(player2); // life 79
+player1.Attack(player2);
 
 
 // ShieldProtection player1ArmoredVelt = new ArmoredVest(player1Mesh);
