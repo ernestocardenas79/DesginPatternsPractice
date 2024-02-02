@@ -6,6 +6,7 @@ namespace Players.Shields;
 public abstract class ShieldProtection
 {
     protected ShieldProtection Shield { get; init; }
+    protected int Protection {get; init;}
     public ShieldProtection()
     { }
     public ShieldProtection(ShieldProtection shield)
@@ -30,13 +31,15 @@ public class NoShield : ShieldProtection
 public class MeshTshirt : ShieldProtection
 {
     public MeshTshirt(ShieldProtection shield) : base(shield)
-    { }
+    { 
+        Protection =1;
+    }
 
     public override double CalculateProtection(double damage)
     {
-        Console.WriteLine($"Mesh Protection: {1}, Input Damage: {damage} Total Damage: {damage - 1}\n");
+        Console.WriteLine($"Mesh Protection: {Protection}, Input Damage: {damage} Total Damage: {damage - Protection}\n");
 
-        return damage - 1;
+        return damage - Protection;
     }
 }
 
@@ -44,25 +47,13 @@ public class Vest : ShieldProtection
 {
     public Vest(ShieldProtection shield) : base(shield)
     {
+        Protection =3;
     }
 
     public override double CalculateProtection(double damage)
     {
-        Console.WriteLine($"Vest Protection: {7}, Input Damage: {damage} Total Damage: {damage - 7}\n");
+        Console.WriteLine($"Vest Protection: {Protection}, Input Damage: {damage} Total Damage: {damage - Protection}\n");
 
-        return Shield.CalculateProtection(damage - 7);
-    }
-}
-
-public class ArmoredVest : ShieldProtection
-{
-    public ArmoredVest(ShieldProtection shield) : base(shield)
-    {
-    }
-    public override double CalculateProtection(double damage)
-    {
-        Console.WriteLine($"ArmoredVest Protection: {8}, Input Damage: {damage} Total Damage: {damage - 8}\n");
-
-        return Shield.CalculateProtection(damage - 8);
+        return Shield.CalculateProtection(damage - Protection);
     }
 }
