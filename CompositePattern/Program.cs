@@ -10,13 +10,13 @@ Console.WriteLine($"Player 2 is walking on the street with {player2.Life} of lif
 
 player1.Attack(player2); 
 
-player2 = PlayerWithProtection.WithVeltBaseOn(player2);
+player2 = PlayerWithProtection.Velt(player2);
 
 Console.WriteLine($"Player 2 wears a Velt with {player2.Life} of life\n");
 
 player1.Attack(player2);
 
-player2 = PlayerWithProtection.WithMeshVeltBaseOn(player2);
+player2 = PlayerWithProtection.MeshVelt(player2);
 
 Console.WriteLine($"Player 2 wears a Mesh under a Velt with {player2.Life} of life\n");
 

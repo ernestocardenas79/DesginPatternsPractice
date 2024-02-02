@@ -22,21 +22,12 @@ public abstract class Player
     protected void HandleAttack(Weapon weapon)
     {
         Console.WriteLine($"{Name}: life={Life}, Protection = {Protection}  Life after attack= {Life - weapon.Damage + Protection}\n");
-
-        Life = Life- weapon.Damage+ Protection;
+        Life = Life - weapon.Damage + Protection;
     }
 }
 
 public class PlayerLvl1 : Player
 {
-}
-
-public class PlayerLvl1WithVelt : Player
-{
-    public PlayerLvl1WithVelt()
-    {
-        Protection = 3;
-    }
 }
 
 public class PlayerLvl1WithMesh : Player
@@ -47,6 +38,14 @@ public class PlayerLvl1WithMesh : Player
     }
 }
 
+public class PlayerLvl1WithVelt : Player
+{
+    public PlayerLvl1WithVelt()
+    {
+        Protection = 3;
+    }
+}
+
 public class PlayerLvl1WithMeshVelt : Player
 {
     public PlayerLvl1WithMeshVelt()
@@ -54,3 +53,4 @@ public class PlayerLvl1WithMeshVelt : Player
         Protection = 4;
     }
 }
+
