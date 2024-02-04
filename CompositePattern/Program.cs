@@ -26,16 +26,7 @@ Console.WriteLine($"Player 2 wears a MeshUnderVelt with {player2.life} of life\n
 
 player1.Attack(player2);
 
+ShieldProtection VestUnderPlasmaShield = new Vest(player1.Shield);
+player1.Shield = VestUnderPlasmaShield;
 
-Console.WriteLine("Statistics==========");
-Console.WriteLine("====================");
-
-Console.WriteLine($"Player1: {player1.life}");
-Console.WriteLine($"      Weapon    : {player1.Weapon}");
-// Console.WriteLine($"      Additaments: {player1.life}");
-
-Console.WriteLine($"Player2: {player2.life}");
-Console.WriteLine($"      Weapon    : {player2.Weapon}");
-// Console.WriteLine($"      Additaments: {player1.life}");
-Console.WriteLine("====================\n\n");
-
+player2.Attack(player1);

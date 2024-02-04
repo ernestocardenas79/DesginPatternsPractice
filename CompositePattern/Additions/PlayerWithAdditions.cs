@@ -13,7 +13,16 @@ public abstract class ShieldProtection
     {
         Shield = shield;
     }
-    public abstract double CalculateProtection(double damage);
+    internal virtual double CalculateProtection(double damage)
+    {
+        PrintProtection(damage);
+        return Shield.CalculateProtection(damage - Protection);
+    }
+
+    protected void PrintProtection(double damage)
+    {
+        Console.WriteLine($"Protection: {Protection}, Input Damage: {damage} Total Damage: {damage - Protection}\n");
+    }
 }
 
 public class NoShield : ShieldProtection
@@ -21,8 +30,7 @@ public class NoShield : ShieldProtection
     public NoShield()
     {
     }
-
-    public override double CalculateProtection(double damage)
+    internal sealed override double CalculateProtection(double damage)
     {
         return damage;
     }
@@ -35,10 +43,9 @@ public class MeshTshirt : ShieldProtection
         Protection =1;
     }
 
-    public override double CalculateProtection(double damage)
+    internal sealed override double CalculateProtection(double damage)
     {
-        Console.WriteLine($"Mesh Protection: {Protection}, Input Damage: {damage} Total Damage: {damage - Protection}\n");
-
+        PrintProtection(damage);
         return damage - Protection;
     }
 }
@@ -48,12 +55,5 @@ public class Vest : ShieldProtection
     public Vest(ShieldProtection shield) : base(shield)
     {
         Protection =3;
-    }
-
-    public override double CalculateProtection(double damage)
-    {
-        Console.WriteLine($"Vest Protection: {Protection}, Input Damage: {damage} Total Damage: {damage - Protection}\n");
-
-        return Shield.CalculateProtection(damage - Protection);
     }
 }
